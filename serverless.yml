@@ -35,7 +35,7 @@ custom:
     stages:
       - local
     # autostart: true
-    host: http://localstackcontainer
+    # host: http://localstackcontainer
   socless: socless-${{self:provider.stage}}
   pkgPyFuncs:
     buildDir: build

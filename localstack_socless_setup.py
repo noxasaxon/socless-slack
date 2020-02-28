@@ -35,8 +35,8 @@ def wait_for_internet_connection():
     count = 0
     while True:
         try:
-            # response = urlopen('http://localhost:4583',timeout=1)
-            response = urlopen("http://localstack_container:8080",timeout=1)
+            response = urlopen('http://localhost:4583',timeout=1)
+            # response = urlopen("http://localstack_container:8080",timeout=1)
             print(response)
             return
         except urllib.error.URLError:
@@ -48,8 +48,8 @@ def wait_for_internet_connection():
 def main():
     try:
         session = boto3.Session(region_name='us-west-1')
-        # ssm = session.client('ssm', endpoint_url="http://localhost:4583")
-        ssm = session.client('ssm', endpoint_url="http://localstack_container:4583")
+        ssm = session.client('ssm', endpoint_url="http://localhost:4583")
+        # ssm = session.client('ssm', endpoint_url="http://localstack_container:4583")
         print(ssm)
         for param in SSM_PARAMS:
             resp = ssm.put_parameter(
@@ -67,7 +67,7 @@ def main():
     
 
 
-wait_for_internet_connection()
+# wait_for_internet_connection()
 main()
 
 
